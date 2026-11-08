@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лабораторна робота: об'єкти та масиви в JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Лабораторна робота</h1>
+    <p>Робота з об’єктами та масивами в JavaScript</p>
+    <nav>
+      <a href="#t1">Завдання 1</a>
+      <a href="#t2">Завдання 2</a>
+      <a href="#t3">Завдання 3</a>
+      <a href="#t4">Завдання 4</a>
+      <a href="#ind">Індивідуальні</a>
+      <a href="#project">Проєкт</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="t1">
+      <h2>Завдання 1: Робота з об'єктами</h2>
+      <p>Об'єкт <code>book</code> з властивостями <code>title</code>, <code>author</code>, <code>year</code>, <code>isRead</code> та методом <code>bookInfo</code>.</p>
+      <pre class="code">let book = { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", year: 1997, isRead: true };
+book.bookInfo = function () { return `Назва: ${this.title}, ...`; };
+book.isRead = !book.isRead;</pre>
+      <button id="btnToggle">Змінити isRead на протилежне</button>
+      <div class="output" id="out1"></div>
+    </section>
+
+    <section id="t2">
+      <h2>Завдання 2: Масиви та об'єкти</h2>
+      <p>Масив <code>library</code>, функція <code>displayLibrary</code> та додавання книги через <code>push()</code>.</p>
+      <pre class="code">function displayLibrary() { library.forEach(book => book.bookInfo()); }
+library.push(new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925, false));</pre>
+      <button id="btnPush">Додати «The Great Gatsby» (push)</button>
+      <div class="output" id="out2"></div>
+    </section>
+
+    <section id="t3">
+      <h2>Завдання 3: Методи масивів</h2>
+      <pre class="code">library.sort((a, b) => a.year - b.year);
+let unreadBooks = library.filter(book => !book.isRead);
+let tolkienBook = library.find(book => book.author === "J.R.R. Tolkien");</pre>
+      <div class="buttons">
+        <button id="btnSort">sort за роком</button>
+        <button id="btnFilter">filter: непрочитані</button>
+        <button id="btnFind">find: Толкін</button>
+      </div>
+      <div class="output" id="out3"></div>
+    </section>
+
+    <section id="t4">
+      <h2>Завдання 4: Взаємодія з користувачем</h2>
+      <p>Замість <code>prompt</code> використано форму. Після додавання виводиться оновлений список.</p>
+      <form id="bookForm">
+        <label>Назва <input id="fTitle" required></label>
+        <label>Автор <input id="fAuthor" required></label>
+        <label>Рік видання <input id="fYear" type="number" required></label>
+        <label class="check"><input id="fRead" type="checkbox"> Прочитана</label>
+        <button type="submit">Додати книгу</button>
+      </form>
+      <div class="output" id="out4"></div>
+    </section>
+
+    <section id="ind">
+      <h2>Індивідуальні завдання (п. 2)</h2>
+      <pre class="code">// метод markAsRead() { this.isRead = true; }
+function calculateAverageYear() {
+  return library.reduce((sum, b) => sum + b.year, 0) / library.length;
+}</pre>
+      <div class="buttons">
+        <button id="btnMark">markAsRead для «The Hobbit»</button>
+        <button id="btnAvg">calculateAverageYear</button>
+      </div>
+      <div class="output" id="out5"></div>
+    </section>
+
+    <section id="project">
+      <h2>Індивідуальний проєкт: Гардероб</h2>
+      <p>Властивості: тип, колір, розмір, сезон, чи одягався. Методи: <code>clothingInfo</code>, <code>markAsWorn</code>.</p>
+      <form id="clothForm">
+        <label>Тип <input id="cType" required></label>
+        <label>Колір <input id="cColor" required></label>
+        <label>Розмір <input id="cSize" required placeholder="S, M, L..."></label>
+        <label>Сезон <input id="cSeason" required placeholder="зима, літо, демісезон"></label>
+        <label class="check"><input id="cWorn" type="checkbox"> Одягався</label>
+        <button type="submit">Додати річ</button>
+      </form>
+      <div class="buttons">
+        <button id="cSort">sort за типом</button>
+        <button id="cFilter">filter: не одягалися</button>
+        <button id="cFind">find: зимова річ</button>
+        <button id="cMark">markAsWorn: Светр</button>
+        <button id="cCount">Скільки одягалося</button>
+      </div>
+      <div class="output" id="out6"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><b>Висновок:</b> закріплено навички створення та маніпулювання об'єктами й масивами, використання методів масивів, взаємодії з користувачем та властивості <code>this</code> у методах об'єкта.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
